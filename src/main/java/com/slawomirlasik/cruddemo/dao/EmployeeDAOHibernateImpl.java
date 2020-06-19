@@ -1,6 +1,8 @@
 package com.slawomirlasik.cruddemo.dao;
 
 import com.slawomirlasik.cruddemo.entity.Employee;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,13 +29,16 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
     public List<Employee> findAll() {
 
         // get the current hibernate session
-
+        Session session = entityManager.unwrap(Session.class);
 
         // create a query
+        Query<Employee> theQuery =
+                session.createQuery("from Employee", Employee.class);
 
         // execute the query
+        List<Employee> employees = theQuery.getResultList();
 
         // return the results
-        return null;
+        return employees;
     }
 }
