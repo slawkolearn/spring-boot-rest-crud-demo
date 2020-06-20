@@ -41,4 +41,19 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
         // return the results
         return employees;
     }
+
+    @Override
+    public Employee findById(int id) {
+        return null;
+    }
+
+    @Override
+    public void save(Employee theEmployee) {
+
+    }
+
+    @Override
+    public void deleteById(int id) {
+
+    }
 }
