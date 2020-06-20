@@ -3,6 +3,7 @@ package com.slawomirlasik.cruddemo.rest;
 import com.slawomirlasik.cruddemo.dao.EmployeeDAO;
 import com.slawomirlasik.cruddemo.entity.Employee;
 import com.slawomirlasik.cruddemo.service.EmployeeService;
+import jdk.jshell.spi.ExecutionControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,6 +57,32 @@ public class EmployeeRestController {
         employeeService.save(theEmployee);
 
         return theEmployee;
+    }
+
+    // add mapping for PUT /employees - update existing employee
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee theEmployee){
+
+        employeeService.save(theEmployee);
+
+        return theEmployee;
+    }
+
+    // add mapping for DELETE /employees/{employeeId} - delete employee
+    @DeleteMapping("/employees/{employeeId}")
+    public String deleteEmployee(@PathVariable int employeeId){
+
+        Employee employee = employeeService.findById(employeeId);
+
+        // throw exception if null
+
+        if(employee == null) {
+            throw new RuntimeException("Employee id not found - " + employeeId);
+        }
+
+        employeeService.deleteById(employeeId);
+
+        return "Deleted employee id - " + employeeId;
     }
 
 }
