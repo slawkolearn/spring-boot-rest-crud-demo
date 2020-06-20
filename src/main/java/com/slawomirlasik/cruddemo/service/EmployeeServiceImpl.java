@@ -23,24 +23,24 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional
     public List<Employee> findAll() {
-        return null;
+        return employeeDAO.findAll();
     }
 
     @Override
     @Transactional
     public Employee findById(int id) {
-        return null;
+        return employeeDAO.findById(id);
     }
 
     @Override
     @Transactional
     public void save(Employee theEmployee) {
-
+        employeeDAO.save(theEmployee);
     }
 
     @Override
     @Transactional
     public void deleteById(int id) {
-
+        employeeDAO.deleteById(id);
     }
 }
