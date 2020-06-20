@@ -59,6 +59,15 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
     @Override
     public void save(Employee theEmployee) {
 
+        // get the current hibernate session
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        // save employee
+        //
+        // Remember - if id = 0 then save/insert else Update
+        //
+        currentSession.saveOrUpdate(theEmployee);
+
     }
 
     @Override
