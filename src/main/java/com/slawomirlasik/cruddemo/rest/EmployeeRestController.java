@@ -25,6 +25,6 @@ public class EmployeeRestController {
     // expose "/employees"  endpoint to return all employees
     @GetMapping("/employees")
     public List<Employee> findAll(){
-        return employeeDAO.findAll();
+        return employeeService.findAll();
     }
 }
